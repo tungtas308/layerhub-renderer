@@ -32,13 +32,22 @@ interface LayerBaseOptions {
   stroke: any
   strokeWidth: number
   animation?: Animation
+  animationEnter?: Animation;
+  animationExit?: Animation;
   duration?: number
   between?: TimeRange
   cut?: TimeRange
 }
 
 interface Animation {
-  type: string
+  type: string;
+  valueFrom?: number;
+  valueTo?: number;
+  value?: number;
+  duration?: number;
+  easing?: string;
+  velocity?: string;
+  delay?: number;
 }
 
 interface Duration {

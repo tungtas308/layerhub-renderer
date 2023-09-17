@@ -125,52 +125,59 @@ class VideoRenderer {
     try {
       frameSource1 = await getTransitionFromSource()
       frameSource2 = await getTransitionToSource()
-
       while (true) {
         const transitionFromClip = getTransitionFromClip()
-        const fromClipNumFrames = Math.round(transitionFromClip.duration * fps)
-        const fromClipProgress = fromClipFrameAt / fromClipNumFrames
-        const fromClipTime = transitionFromClip.duration * fromClipProgress
-        const transitionNumFramesSafe = 0
-        // console.log(fromClipFrameAt, fromClipNumFrames, transitionNumFramesSafe)
-        const transitionFrameAt = fromClipFrameAt - (fromClipNumFrames - transitionNumFramesSafe)
-        const transitionLastFrameIndex = transitionNumFramesSafe
-        if (transitionFrameAt >= transitionLastFrameIndex) {
-          transitionFromClipId += 1
-          console.log(`Done with transition, switching to next transitionFromClip (${transitionFromClipId})`)
-          if (!getTransitionFromClip()) {
-            console.log("No more transitionFromClip, done")
+        // console.log(transitionFromClip);
+        if(transitionFromClip){
+          const timeD = transitionFromClip.duration;
+          // const timeD = 5;
+          const fromClipNumFrames = Math.round(timeD * fps)
+          const fromClipProgress = fromClipFrameAt / fromClipNumFrames
+          const fromClipTime = timeD * fromClipProgress
+          const transitionNumFramesSafe = 0
+          const transitionFrameAt = fromClipFrameAt - (fromClipNumFrames - transitionNumFramesSafe)
+          const transitionLastFrameIndex = transitionNumFramesSafe
+          if (transitionFrameAt >= transitionLastFrameIndex) {
+            transitionFromClipId += 1
+            console.log(`Done with transition, switching to next transitionFromClip (${transitionFromClipId})`)
+
+            await frameSource1.close()
+            frameSource1 = frameSource2
+            frameSource2 = await getTransitionToSource()
+
+            fromClipFrameAt = transitionLastFrameIndex
+            toClipFrameAt = 0
+
+            // continue
+          }
+        if(frameSource1){
+          const newFrameSource1Data = await frameSource1.readNextFrame({ time: fromClipTime })
+          // If we got no data, use the old data
+          // TODO maybe abort?
+          if (newFrameSource1Data) {
+            frameSource1Data = newFrameSource1Data
+          } else {
+            console.warn("No frame data returned, using last frame")
+          }
+
+          let outFrameData = frameSource1Data
+          await this.ffmpeg.write(outFrameData)
+
+          if (this.ffmpeg.outProcessError) {
+
             break
           }
-          await frameSource1.close()
-          frameSource1 = frameSource2
-          frameSource2 = await getTransitionToSource()
 
-          fromClipFrameAt = transitionLastFrameIndex
-          toClipFrameAt = 0
+          totalFramesWritten += 1
+          fromClipFrameAt += 1
 
-          continue
         }
 
-        const newFrameSource1Data = await frameSource1.readNextFrame({ time: fromClipTime })
-        // If we got no data, use the old data
-        // TODO maybe abort?
-        if (newFrameSource1Data) {
-          frameSource1Data = newFrameSource1Data
         } else {
-          console.warn("No frame data returned, using last frame")
-        }
-
-        let outFrameData = frameSource1Data
-
-        await this.ffmpeg.write(outFrameData)
-
-        if (this.ffmpeg.outProcessError) {
+          console.log("No more transitionFromClip, done")
           break
         }
 
-        totalFramesWritten += 1
-        fromClipFrameAt += 1
       }
 
       this.ffmpeg.close()

@@ -1,0 +1,13 @@
+@layerhub-io/react:build: cache hit, replaying output [2m7868b8ba1624c412[0m
+[35m@layerhub-io/react:build: [0m
+[35m@layerhub-io/react:build: [0m> @layerhub-io/react@0.3.3 build /root/Projects/LayerhubIO/layerhub-io/packages/react
+[35m@layerhub-io/react:build: [0m> pnpm run clean && pnpm run compile
+[35m@layerhub-io/react:build: [0m
+[35m@layerhub-io/react:build: [0m
+[35m@layerhub-io/react:build: [0m> @layerhub-io/react@0.3.3 clean /root/Projects/LayerhubIO/layerhub-io/packages/react
+[35m@layerhub-io/react:build: [0m> rimraf -rf ./dist
+[35m@layerhub-io/react:build: [0m
+[35m@layerhub-io/react:build: [0m
+[35m@layerhub-io/react:build: [0m> @layerhub-io/react@0.3.3 compile /root/Projects/LayerhubIO/layerhub-io/packages/react
+[35m@layerhub-io/react:build: [0m> tsc
+[35m@layerhub-io/react:build: [0m

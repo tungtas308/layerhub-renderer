@@ -1,0 +1,5 @@
+@layerhub-io/core:build: cache hit, replaying output [2m8890b12728f788c7[0m
+[34m@layerhub-io/core:build: [0m
+[34m@layerhub-io/core:build: [0m> @layerhub-io/core@0.3.3 build /root/Projects/LayerhubIO/layerhub-io/packages/core
+[34m@layerhub-io/core:build: [0m> tsc
+[34m@layerhub-io/core:build: [0m

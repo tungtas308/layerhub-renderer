@@ -67,9 +67,11 @@ async function parseConfig({ clips }: any) {
         await pMap(
           layers,
           async (layer: any) => {
-            const { type, src } = layer
 
+            const { type, src } = layer
+            console.log(" layer type", type)
             if (type === "StaticVideo") {
+
               const {
                 duration: fileDuration,
                 width: widthIn,
@@ -78,7 +80,9 @@ async function parseConfig({ clips }: any) {
                 rotation,
               } = await readVideoFileInfo(src)
               let { cut } = layer
-
+              if (!cut){
+                cut = {};
+              }
               if (!cut.from) cut.from = 0
               cut.from = Math.max(cut.from, 0)
               cut.from = Math.min(cut.from, fileDuration)

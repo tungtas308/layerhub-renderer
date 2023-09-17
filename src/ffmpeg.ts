@@ -70,18 +70,18 @@ class FFmpeg {
 
   public getOutputArgs = () => {
     const outputArgs = [
-      "-vf",
-      "format=yuv420p",
+      // "-vf",
+      // "format=yuv420p",
       "-vcodec",
-      "libx264",
-      "-profile:v",
-      "high",
-      "-preset:v",
-      "medium",
-      "-crf",
-      "18",
+      "h264",
+      // "-profile:v",
+      // "high",
+      // "-preset:v",
+      // "medium",
+      // "-crf",
+      // "18",
       "-movflags",
-      "faststart",
+      "+faststart",
     ]
 
     return [...outputArgs]

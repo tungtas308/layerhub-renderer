@@ -123,9 +123,12 @@ async function createFrameSource({ clip, width, height, fps, framerateStr }: any
   )
 
   async function readNextFrame({ time }: any) {
+
     const canvas = createFabricCanvas({ width, height })
     for (const { frameSource, layer } of layerFrameSources) {
-      const offsetProgress = (time - layer.start) / layer.layerDuration
+      const duration = layer.layerDuration;
+      // const duration = 5;
+      const offsetProgress = (time - layer.start) / duration
       const shouldDrawLayer = offsetProgress >= 0 && offsetProgress <= 1
 
       if (shouldDrawLayer) {

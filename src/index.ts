@@ -25,7 +25,7 @@ app.post("/render", async (req, res) => {
         const outDir = dirname("outPath")
         const file = join(outDir, `position.mp4`)
         const buffer = fs.readFileSync(file)
-        return aws.uploadBuffer("video.mp4", buffer)
+        // return aws.uploadBuffer("video.mp4", buffer)
       })
       .then((url) => res.json({ url }))
       .catch((err) => {

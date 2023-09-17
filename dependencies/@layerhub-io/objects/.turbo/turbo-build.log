@@ -1,0 +1,5 @@
+@layerhub-io/objects:build: cache hit, replaying output [2m69c83c0261334e14[0m
+[35m@layerhub-io/objects:build: [0m
+[35m@layerhub-io/objects:build: [0m> @layerhub-io/objects@0.2.0 build /root/Projects/LayerhubIO/layerhub-io/packages/objects
+[35m@layerhub-io/objects:build: [0m> tsc
+[35m@layerhub-io/objects:build: [0m

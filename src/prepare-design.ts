@@ -8,16 +8,17 @@ export const prepareDesign = (design: IDesign): IDesign => {
 
 const prepareScene = (scene: IScene) => {
   const updatedLayers = scene.layers.map((layer) => prepareLayer(layer as ILayer))
-  return { ...scene, layers: updatedLayers, duration: scene.duration! / 1000 }
+  return { ...scene, layers: updatedLayers, duration: scene.duration }
 }
 
 const prepareLayer = (layer: ILayer) => {
+  console.log("layer",layer)
   if (layer.type === "StaticVideo") {
     const parsedLayer = {
       ...layer,
-      ...(layer.duration && { duration: layer.duration / 1000 }),
+      ...(layer.duration && { duration: layer.duration  }),
       ...(layer.cut && {
-        cut: { from: layer.cut.from! / 1000, to: layer.cut.to! / 1000 },
+        cut: { from: layer.cut.from! , to: layer.cut.to!  },
       }),
     }
     return parsedLayer

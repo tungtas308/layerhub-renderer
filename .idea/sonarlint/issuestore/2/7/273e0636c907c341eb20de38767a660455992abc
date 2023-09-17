@@ -1,0 +1,12 @@
+
+^typescript:S6353";Use concise character class syntax '\d' instead of '[0-9]'.(ÿÆÚ°8ÔÄ¡«§1
+^typescript:S6353";Use concise character class syntax '\d' instead of '[0-9]'.(ÿÆÚ°8ÔÄ¡«§1
+|typescript:S3776'"TRefactor this function to reduce its Cognitive Complexity from 32 to the 15 allowed.(›ˆÒôúÿÿÿÿ8ÔÄ¡«§1
+Ptypescript:S2201A"(The return value of "find" must be used.(õŸ˜ıÿÿÿÿ8ÕÄ¡«§1
+`typescript:S1854F"=Remove this useless assignment to variable "firstVideoWidth".(ñîñí8ÕÄ¡«§1
+atypescript:S1854G">Remove this useless assignment to variable "firstVideoHeight".(‰ä»8ÕÄ¡«§1
+Btypescript:S125‚"Remove this commented out code.(’åÚÜ8ÕÄ¡«§1
+Btypescript:S125…"Remove this commented out code.(ôÈæ§8ÕÄ¡«§1
+dtypescript:S1854•";Remove this useless assignment to variable "toClipFrameAt".(¹ÜÃ§üÿÿÿÿ8ÕÄ¡«§1
+–typescript:S4165•"mReview this redundant assignment: "toClipFrameAt" already holds the assigned value along all execution paths.(¹ÜÃ§üÿÿÿÿ8ÕÄ¡«§1
+]typescript:S1135œ"4Complete the task associated to this "TODO" comment.(ŞËûåüÿÿÿÿ8ÕÄ¡«§1
